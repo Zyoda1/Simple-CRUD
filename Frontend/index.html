@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Football Team Manager</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Football Team Manager</h1>
+
+  <form id="teamForm">
+    <input type="text" id="name" placeholder="Team Name" required>
+    <input type="text" id="coach" placeholder="Coach">
+    <input type="text" id="league" placeholder="League">
+    <input type="text" id="stadium" placeholder="Stadium">
+    <input type="number" id="foundedYear" placeholder="Founded Year">
+    <button type="submit">Create Team</button>
+
+    <div id="playersSection">
+        <h4>Players</h4>
+        <div class="player">
+        <input type="text" placeholder="Player Name" class="player-name">
+        <input type="text" placeholder="Position" class="player-position">
+        <input type="number" placeholder="Jersey Number" class="player-number">
+    </div>
+    <button type="button" onclick="addPlayerField()">Add Another Player</button>
+    </div>
+
+  </form>
+
+  <h2>All Teams</h2>
+  <div id="teamsList" class="teams-list"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
