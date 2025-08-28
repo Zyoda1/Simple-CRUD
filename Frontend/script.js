@@ -172,7 +172,7 @@ async function deleteTeam(id) {
   if (!confirmed) return;
 
   try {
-    const res = await fetch(`https://simple-crud-gj58.onrender.com/${id}`, {
+    const res = await fetch(`${BASE_URL}/${id}`, {
       method: 'DELETE'
     });
     if (!res.ok) throw new Error('Delete failed');
