@@ -11,7 +11,7 @@ const { MongoExpiredSessionError } = require('mongodb');
 const app = express();
 app.use(express.json()); // Middleware for JSON parsing
 app.use(cors({
-  origin: 'http://127.0.0.1:5500'
+  origin: ['http://127.0.0.1:5500','https://gilded-swan-10929a.netlify.app']
 }));
  // Enable CORS for all routes
 
