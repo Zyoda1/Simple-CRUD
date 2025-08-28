@@ -1,10 +1,11 @@
 const form = document.getElementById('teamForm');
 const teamsList = document.getElementById('teamsList');
 let editingId = null;
+const BASE_URL = 'https://simple-crud-gj58.onrender.com/teams';
 
 // Load all teams
 async function loadTeams() {
-  const res = await fetch('https://simple-crud-gj58.onrender.com');
+  const res = await fetch(BASE_URL);
   const teams = await res.json();
 
   teamsList.innerHTML = '';
@@ -100,7 +101,7 @@ form.addEventListener('submit', async (e) => {
 
   try {
     if (editingId) {
-      const res = await fetch(`https://simple-crud-gj58.onrender.com/${editingId}`, {
+      const res = await fetch(`${BASE_URL}/${editingId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(team)
@@ -110,7 +111,7 @@ form.addEventListener('submit', async (e) => {
       editingId = null;
       document.querySelector('button[type="submit"]').textContent = 'Create Team';
     } else {
-      const res = await fetch('https://simple-crud-gj58.onrender.com', {
+      const res = await fetch(BASE_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(team)
@@ -132,7 +133,7 @@ async function editTeam(id) {
   console.log('Editing team with ID:', id);
 
   try {
-    const res = await fetch(`https://simple-crud-gj58.onrender.com/${id}`);
+    const res = await fetch(`${BASE_URL}/${id}`);
     if (!res.ok) throw new Error(`Failed to fetch team: ${res.status}`);
     const team = await res.json();
 
