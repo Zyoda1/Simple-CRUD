@@ -4,7 +4,7 @@ let editingId = null;
 
 // Load all teams
 async function loadTeams() {
-  const res = await fetch('http://localhost:5000/teams');
+  const res = await fetch('https://simple-crud-gj58.onrender.com');
   const teams = await res.json();
 
   teamsList.innerHTML = '';
@@ -100,7 +100,7 @@ form.addEventListener('submit', async (e) => {
 
   try {
     if (editingId) {
-      const res = await fetch(`http://localhost:5000/teams/${editingId}`, {
+      const res = await fetch(`https://simple-crud-gj58.onrender.com/${editingId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(team)
@@ -110,7 +110,7 @@ form.addEventListener('submit', async (e) => {
       editingId = null;
       document.querySelector('button[type="submit"]').textContent = 'Create Team';
     } else {
-      const res = await fetch('http://localhost:5000/teams', {
+      const res = await fetch('https://simple-crud-gj58.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(team)
@@ -132,7 +132,7 @@ async function editTeam(id) {
   console.log('Editing team with ID:', id);
 
   try {
-    const res = await fetch(`http://localhost:5000/teams/${id}`);
+    const res = await fetch(`https://simple-crud-gj58.onrender.com/${id}`);
     if (!res.ok) throw new Error(`Failed to fetch team: ${res.status}`);
     const team = await res.json();
 
@@ -171,7 +171,7 @@ async function deleteTeam(id) {
   if (!confirmed) return;
 
   try {
-    const res = await fetch(`http://localhost:5000/teams/${id}`, {
+    const res = await fetch(`https://simple-crud-gj58.onrender.com/${id}`, {
       method: 'DELETE'
     });
     if (!res.ok) throw new Error('Delete failed');
